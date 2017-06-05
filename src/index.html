@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>TesteDateTimePicker</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+
+    <script language="javascript">
+        angular
+            .module('firstApplication', ['ngMaterial', 'ngMessages'])
+            .controller('dateController', dateController);
+
+        function dateController($scope) {
+            $scope.myDate = new Date();
+            $scope.minDate = new Date(
+                $scope.myDate.getFullYear(),
+                $scope.myDate.getMonth(),
+                $scope.myDate.getDate() + 2);
+            $scope.maxDate = new Date(
+                $scope.myDate.getFullYear(),
+                $scope.myDate.getMonth(),
+                $scope.myDate.getDate() + 26);
+        }
+    </script>
+
+</head>
+
+<body ng-app="firstApplication">
+    <app-root>Loading...</app-root>
+    <div class="datepickerdemo" ng-controller="dateController as ctrl" layout="column" ng-cloak>
+        <!--<h4>Standard Date Picker</h4>
+        <md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>-->
+
+        <h4>Date-picker Dada minima e data maxima</h4>
+        <md-datepicker ng-model="myDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+
+    </div>
+</body>
